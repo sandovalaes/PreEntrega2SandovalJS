@@ -65,15 +65,16 @@ if (nombrecompleto !== null) {
                                 + '2 = Standard \n'
                                 + '3 = Advanced \n');
                         switch (opcionVersion) {
-                                case null: break;
-                                case '1': precioCotizacion = precioBasico;
-                                        nombreVersion = "Basic";
+                                case null: 
+                                        break;
+                                case '1': 
+                                        nombreVersion = 'Basic';
                                         break;
                                 case '2': 
-                                        nombreVersion = "Standard";
+                                        nombreVersion = 'Standard';
                                         break;
                                 case '3': 
-                                        nombreVersion = "Advanced";
+                                        nombreVersion = 'Advanced';
                                         break;
                                 default: alert('La versión ingresada es incorrecta.');
                                         existeError = true;
@@ -88,12 +89,13 @@ if (nombrecompleto !== null) {
                                         + '1 = Local \n'
                                         + '2 = En la Nube \n');
                                 switch (opcionInstalacion) {
-                                        case null: break;
+                                        case null:                              
+                                                break;
                                         case '1': 
-                                                nombreInstalacion = "Local";
+                                                nombreInstalacion = 'Local';
                                                 break;
                                         case '2':
-                                                nombreInstalacion = "Nube";
+                                                nombreInstalacion = 'Nube';
                                                 break;
                                         default: alert('El tipo de instalación ingresada es incorrecta.');
                                                 existeError = true;
@@ -102,11 +104,11 @@ if (nombrecompleto !== null) {
                         } while (existeError && opcionInstalacion !== null)
                 }
 
-                if (opcionInstalacion !== null) {
+                if (opcionVersion !== null && opcionInstalacion !== null) {
                         do {
                                 cantidadUsuarios = parseInt(prompt('Ingrese el número de usuarios: '));
                                 if (Number.isInteger(cantidadUsuarios)) {
-                                        promosfiltradas = promociones.filter((item) => item.instalacion = nombreInstalacion && item.nombreversion == nombreVersion);
+                                        promosfiltradas = promociones.filter((item) => item.instalacion === nombreInstalacion && item.nombreversion === nombreVersion);
                                         promocionSeleccionada = promosfiltradas.find((item) => cantidadUsuarios >= item.cant_usu_minimo && cantidadUsuarios <= item.cant_usu_maximo);
                                         let importePlan = promocionSeleccionada.importe;
                                         totalPresupuesto = importePlan * cantidadUsuarios;
@@ -132,7 +134,7 @@ if (nombrecompleto !== null) {
                                 }
                         } while (existeError && salir !== null)
                 }
-        } while (salir !== NO && salir !== null && opcionVersion !== null)
+        } while (salir !== NO && salir !== null && opcionVersion !== null && opcionInstalacion !== null)
         alert(`Muchas gracias ${nombrecompleto} por visitarnos.`);
 }
 else
